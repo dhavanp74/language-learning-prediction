@@ -1,0 +1,32 @@
+
+# Dataset files
+data/raw/*
+data/processed/*
+
+# Keep folder structure in Git
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Jupyter Notebook temporary files
+.ipynb_checkpoints/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor settings
+.vscode/
