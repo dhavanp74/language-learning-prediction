@@ -42,7 +42,7 @@ Commands and checks:
 - `npm run build` — passed.
 - Browser walkthrough — passed for accent and CEFR selection, the three-step flow, example profile, rendered result, and automatic scroll to the result.
 - API smoke tests — passed for all four tasks.
-- `npm audit --omit=dev` — passed with no production dependency vulnerabilities. npm reported four high-severity development dependency advisories.
+- `npm audit` — passed with no dependency vulnerabilities after removing the development-only Next lint plugin that brought in the vulnerable transitive dependency chain.
 
 Sample responses for the same example profile:
 - Fluency: `{\"task\":\"fluency\",\"prediction\":77.7}`
