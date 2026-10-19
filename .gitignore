@@ -19,6 +19,16 @@ __pycache__/
 # Jupyter Notebook temporary files
 .ipynb_checkpoints/
 
+# Next.js app output and dependencies
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.vercel/
+frontend/coverage/
+frontend/tsconfig.tsbuildinfo
+/AGENTS.md
+/frontend/AGENTS.md
+
 # Environment variables and secrets
 .env
 .env.*

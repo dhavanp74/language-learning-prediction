@@ -3,11 +3,11 @@
 
 ## Overview
 
-This project explores the use of machine learning to understand and predict language learning outcomes. Using the *Language Learning to Fluency — Who Gets There* dataset from Kaggle, the project aims to identify factors associated with language proficiency, learner dropout, study efficiency, and accent development.
+This project explores machine-learning predictions of language-learning outcomes using the *Language Learning to Fluency — Who Gets There* dataset from Kaggle. The notebooks document data exploration, feature decisions, and training. Four saved models are available for fluency, dropout, CEFR level, and accent prediction.
 
 ## Objectives
 
-The project explores five prediction tasks.
+The project work explores five prediction tasks. The current interface uses the four outcomes with saved model artifacts.
 
 ### 1. Classification
 
@@ -17,7 +17,7 @@ The project explores five prediction tasks.
 
 ### 2. Regression
 
-- **Study Hours Prediction:** Estimate the study hours required to reach a target proficiency level, subject to the availability of a suitable target variable in the dataset.
+- **Study Hours Prediction:** Explored in the notebooks; no saved study-hours model is currently connected to the interface.
 - **Accent Score Prediction:** Estimate an accent native-likeness score using relevant learner characteristics and practice-related features, subject to dataset validation.
 
 ## Dataset
@@ -27,7 +27,7 @@ The project explores five prediction tasks.
 
 The dataset will be inspected to understand its features, target variables, data quality, and suitability for each prediction task before model development.
 
-Dataset files are kept locally and are excluded from version control.
+Dataset files are kept in `data/raw/`. The notebooks record the project's data understanding, feature selection, and model training decisions.
 
 ## Planned Workflow
 
@@ -49,13 +49,30 @@ language-learning-prediction/
 ├── notebooks/
 ├── models/
 ├── reports/
+├── frontend/
+│   ├── app/
+│   └── scripts/
 ├── .gitignore
 └── README.md
 ```
 
+## Run the interface
+
+Install the Python dependencies from `frontend/requirements.txt` in the Python environment available as `python`, then run:
+
+```text
+cd frontend
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000`. The interface asks which forecast to create, then guides the learner through the relevant profile questions. The model files were saved with scikit-learn 1.6.1, so the Python requirements pin that version for compatibility.
+
 ## Tools and Technologies
 
 - Python
+- Next.js and React
+- TypeScript
 - Jupyter Notebook
 - pandas and NumPy
 - Matplotlib and Seaborn
@@ -66,9 +83,9 @@ Additional libraries will be introduced when required.
 
 ## Project Status
 
-**Current stage:** Repository setup.
+**Current stage:** A guided Next.js interface is connected to the four saved prediction models. Predictions are estimates based on training-data patterns, not guarantees or individualized explanations of causality.
 
-Dataset validation, exploratory analysis, model development, and evaluation are planned next.
+See [reports/PROJECT_SUMMARY.md](reports/PROJECT_SUMMARY.md) for the notebook and model overview and [reports/VALIDATION_REPORT.md](reports/VALIDATION_REPORT.md) for interface validation.
 
 ## License
 
