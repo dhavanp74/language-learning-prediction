@@ -50,4 +50,24 @@ Sample responses for the same example profile:
 - CEFR: `{\"task\":\"cefr\",\"prediction\":\"B2\"}`
 - Accent: `{\"task\":\"accent\",\"prediction\":6.7}`
 
-Overall status: All success criteria are met.
+## Phase 6: Docker deployment packaging
+
+Success criteria:
+- Build the Next.js app in standalone mode for a compact production image.
+- Include the Python inference runtime and saved models in the same container.
+- Exclude data, notebooks, local instructions, and build dependencies from Docker build context.
+- Document how to build locally and configure a single Render Docker service.
+
+Result:
+- Dockerfile, `.dockerignore`, standalone output configuration, and deployment instructions are in place.
+- Python inference dependencies are pinned, including scikit-learn 1.6.1 to match the saved model artifacts.
+- The container is configured to run the web process as the non-root `node` user.
+- `npm run lint`, `npm run build`, and `npm audit` passed; the standalone server artifact was generated.
+- An isolated environment installed the pinned Python requirements, passed `pip check`, and produced predictions from all four saved models.
+- `docker build` is not yet verified: Docker CLI is installed, but the Docker Engine is unavailable in this environment.
+- The machine-wide Python environment has an unrelated Streamlit/Pillow version conflict; the isolated project environment has no broken requirements.
+- No cloud service has been created and nothing has been deployed.
+
+Overall status:
+- Phases 1–5 passed all defined success criteria.
+- Docker packaging is configured, but deployment readiness remains pending a successful image build when a Docker Engine is available.

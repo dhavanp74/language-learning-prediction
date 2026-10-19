@@ -58,15 +58,27 @@ language-learning-prediction/
 
 ## Run the interface
 
-Install the Python dependencies from `frontend/requirements.txt` in the Python environment available as `python`, then run:
+Install the Python dependencies from `frontend/requirements.txt` in the Python environment, then run:
 
 ```text
 cd frontend
+python -m pip install -r requirements.txt
 npm install
 npm run dev
 ```
 
 Open `http://localhost:3000`. The interface asks which forecast to create, then guides the learner through the relevant profile questions. The model files were saved with scikit-learn 1.6.1, so the Python requirements pin that version for compatibility.
+
+## Docker deployment
+
+The Docker image bundles the Next.js app, Python prediction runtime, and saved models into one service. Build and run it locally from the repository root:
+
+```text
+docker build -t language-learning-signal-studio .
+docker run --rm -p 3000:3000 language-learning-signal-studio
+```
+
+For Render, create a Web Service from this repository, select the Docker runtime, and leave the root directory at the repository root. Render will build from the root `Dockerfile`; the service listens on the assigned `PORT`. Review the current instance pricing and availability before creating the service. No deployment has been created yet.
 
 ## Tools and Technologies
 
