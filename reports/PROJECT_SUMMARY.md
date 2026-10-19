@@ -61,8 +61,14 @@ The model outputs align to the project goals:
 - CEFR prediction estimates the learner's likely proficiency band (A0 to C2).
 - Accent prediction estimates a score between the dataset's native-likeness range.
 
-## Frontend goal
-The frontend should translate these predictions into a guided user experience. Instead of showing raw model values alone, the interface should ask for practical learner information, interpret the outputs, and present them as conversational insights about learning potential, retention risk, and accent trajectory.
+## Frontend
+The Next.js interface is implemented in `frontend/`. Users choose one of four prediction tasks and then answer a short guided sequence of task-relevant questions. Input descriptions and range cues explain what each answer represents. Results include a visual scale, plain-language interpretation, a profile recap, and a note about the limits of model-based estimates.
 
 ## Current state of the repository
-The repository already contains the data, trained models, and a detailed exploratory notebook workflow. The remaining work is the interface layer that makes the project usable for users.
+The guided interface is connected to the four saved models, packaged with the Python inference runtime in Docker, and deployed as a Render web service:
+
+- Live app: https://language-learning-prediction.onrender.com
+- Hosting: Render Free Web Service in Singapore. The service sleeps when idle, so its first request after inactivity may be delayed.
+- Source: the public GitHub repository's `main` branch. Deploy later pushes manually from the Render dashboard.
+
+For the full request-by-request history, design and deployment decisions, and operating notes, see [PROJECT_HISTORY.md](./PROJECT_HISTORY.md). See [VALIDATION_REPORT.md](./VALIDATION_REPORT.md) for test results.

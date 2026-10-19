@@ -74,11 +74,11 @@ Open `http://localhost:3000`. The interface asks which forecast to create, then 
 The Docker image bundles the Next.js app, Python prediction runtime, and saved models into one service. Build and run it locally from the repository root:
 
 ```text
-docker build -t language-learning-signal-studio .
-docker run --rm -p 3000:3000 language-learning-signal-studio
+docker build -t language-learning-prediction .
+docker run --rm -p 3000:3000 language-learning-prediction
 ```
 
-For Render, create a Web Service from this repository, select the Docker runtime, and leave the root directory at the repository root. Render will build from the root `Dockerfile`; the service listens on the assigned `PORT`. Review the current instance pricing and availability before creating the service. No deployment has been created yet.
+The app is deployed on Render at [language-learning-prediction.onrender.com](https://language-learning-prediction.onrender.com) as a Free Docker Web Service in Singapore. Free services sleep after inactivity, so the first request after a quiet period may be delayed. The service is connected to the public GitHub repository; deploy updates manually from the [Render dashboard](https://dashboard.render.com/web/srv-dbatgjjncjis73acakgg).
 
 ## Tools and Technologies
 
@@ -98,6 +98,7 @@ Additional libraries will be introduced when required.
 **Current stage:** A guided Next.js interface is connected to the four saved prediction models. Predictions are estimates based on training-data patterns, not guarantees or individualized explanations of causality.
 
 See [reports/PROJECT_SUMMARY.md](reports/PROJECT_SUMMARY.md) for the notebook and model overview and [reports/VALIDATION_REPORT.md](reports/VALIDATION_REPORT.md) for interface validation.
+See [reports/PROJECT_HISTORY.md](reports/PROJECT_HISTORY.md) for the full task history, implementation and deployment decisions, and current hosting notes.
 
 ## License
 

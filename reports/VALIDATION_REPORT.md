@@ -64,10 +64,27 @@ Result:
 - The container is configured to run the web process as the non-root `node` user.
 - `npm run lint`, `npm run build`, and `npm audit` passed; the standalone server artifact was generated.
 - An isolated environment installed the pinned Python requirements, passed `pip check`, and produced predictions from all four saved models.
-- `docker build` is not yet verified: Docker CLI is installed, but the Docker Engine is unavailable in this environment.
+- Linux binary wheels for all pinned requirements were confirmed available for the container's Python 3.11 runtime.
+- The user built and ran the image locally. The homepage returned HTTP 200, and all four prediction API calls succeeded.
 - The machine-wide Python environment has an unrelated Streamlit/Pillow version conflict; the isolated project environment has no broken requirements.
-- No cloud service has been created and nothing has been deployed.
+- Docker packaging was committed and pushed by the user as `ccab049`.
+
+## Phase 7: Render deployment
+
+Success criteria:
+- Deploy the repository's root Dockerfile as a public Render web service.
+- Confirm that the deployment becomes live.
+- Verify the public page and all four model-backed prediction tasks.
+
+Result: Success.
+- Created the Render Web Service from the public GitHub repository on the `main` branch, using the Docker runtime and the root `Dockerfile`.
+- Selected the Singapore region and Free compute after confirming the user preferred the free tier over the dashboard's default $7/month plan.
+- Render built the Docker image and reported the service live at https://language-learning-prediction.onrender.com.
+- The public homepage returned HTTP 200.
+- Live prediction smoke tests passed: fluency `77.7`, dropout `6`, CEFR `B2`, accent `6.7`.
+- The repository was connected as a public Git repository; automatic deploys are not enabled. Future changes need to be manually deployed from Render.
+- Free services sleep after inactivity; a cold start can delay the first response by about 50 seconds or more.
 
 Overall status:
-- Phases 1–5 passed all defined success criteria.
-- Docker packaging is configured, but deployment readiness remains pending a successful image build when a Docker Engine is available.
+- Phases 1–7 passed their defined success criteria.
+- The app is deployed and its public page and prediction API have been smoke-tested.
